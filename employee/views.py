@@ -1,9 +1,17 @@
+from django.shortcuts import render # type: ignore
 from rest_framework.decorators import api_view # type: ignore
 from rest_framework.response import Response # type: ignore
 from rest_framework import status # type: ignore
 from .services import EmployeeService
 from .serializers import EmployeeSerializer
 from django.http import HttpResponse # type: ignore
+from .models import Employee
+
+#render html form
+
+def employeeInfo(request):
+    employees = Employee.objects.all()
+    return render(request, 'employee/employeeInfo.html', {'employees': employees})
 
 #homepage
 
